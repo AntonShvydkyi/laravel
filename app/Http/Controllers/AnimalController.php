@@ -17,7 +17,7 @@ class AnimalController extends Controller
     public function showAnimalData(Request $request, $animalId)
     {
 
-        $animal = Animals::find($animalId);
+        $animal = Animals::findOrFail($animalId);
         $animalData = AnimalData::where('animal_id', $animalId)->get();
 
         return view('animalData', [
