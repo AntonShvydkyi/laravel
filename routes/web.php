@@ -20,27 +20,24 @@ Route::get('/', function () {
 
 Route::get(
     'animals',
-    [AnimalController::class, 'showAll']
-);
+    [AnimalController::class, 'showAll']);
+
 
 Route::get(
     'animals/{animalId}',
-    [AnimalController::class, 'showAnimalData']
+    [AnimalController::class, 'showAnimalData'])->name('animal.data');
 
-)->name('animal.data');
 
 Route::get('animalNames',
     [AnimalController::class, 'showAllNames']);
 
 
+
+Route::get('employees/{animal_id}',
+    [AnimalController::class, 'showAllEmployees'])->name('employees_data');
+
+
+
 Route::get(
-    'foods',
-    [AnimalController::class, 'showAllFoods']);
-
-
-Route::get(
-    'employees',
-    [AnimalController::class, 'showAllEmployees']);
-
-
-
+    'food/{animal_id}',
+    [AnimalController::class, 'showAllFoods'])->name('foods_data');

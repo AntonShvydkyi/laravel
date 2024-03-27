@@ -14,23 +14,24 @@ class AnimalController extends Controller
     public function showAllNames(Request $request)
     {
         $animalNames = Animal::pluck('animal_name');
-        return view('animalNames', ['animalNames' => $animalNames]);
-
+        $employees = Employee::all();
+        return view('animalNames', ['animalNames' => $animalNames, 'employees' => $employees]);
     }
 
-    public function showAllFoods(Request $request)
+    public function showAllEmployees(Request $request, $animal_id)
     {
-        $foods = Food::pluck('type_of_food');
-        //dd($foods->toArray());
-       return view('foods', ['foods' => $foods]);
+        $employees = Employee::where('animal_id', $animal_id)->get();
+        $foods = Food::all();
+        return view('employees', ['employees' => $employees, 'foods' => $foods]);
     }
 
-    public function showAllEmployees(Request $request)
+
+    public function showAllFoods(Request $request, $animal_id)
     {
-        $employees = Employee::pluck('name_of_worker');
-        //dd($employees->toArray());
-        return view('employee', ['employees' => $employees]);
+        $foods = Food::where('animal_id', $animal_id)->get();
+        return view('foods', ['foods' => $foods]);
     }
+
 
     public function showAll(Request $request)
     {
@@ -50,6 +51,5 @@ class AnimalController extends Controller
             'animalData' => $animalData
         ]);
     }
-
 }
 

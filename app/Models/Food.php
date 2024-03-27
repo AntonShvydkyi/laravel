@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Food extends Model{
+
     protected $table = "food";
+    public function animals()
+    {
+        return $this->hasMany(Animal::class);
+    }
 }

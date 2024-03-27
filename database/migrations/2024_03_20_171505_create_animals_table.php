@@ -11,12 +11,10 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up(){
-        Schema::create('animals', function (Blueprint $table)
-        {
+    public function up()
+    {
+        Schema::create('animals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('type of food');
             $table->timestamps();
         });
     }
